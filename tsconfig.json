@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "baseUrl": "./",                          /* Base directory to resolve non-absolute module names. */  /* Base directory to resolve non-absolute module names. */
+    "paths": {
+      "app/*": ["src/*"],
+      "*": ["lib/*"]
+    },   
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
+  },
+  "include": [
+    "lib/**/*",
+    "src/**/*",
+  ],
+  "exclude": [
+    "node_modules",
+  ],
+}
