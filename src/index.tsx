@@ -64,13 +64,6 @@ export default class App extends Component<AppProps, AppState> {
   }
 }
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
 /** Types */
 
 interface AppProps {
@@ -79,3 +72,11 @@ interface AppProps {
 interface AppState {
   readonly state: State;
 }
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+

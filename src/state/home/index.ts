@@ -10,6 +10,20 @@ export class Home implements Home.State {
   })
 
   public update(message: any): Next<Home> {
+      if(message instanceof SearchName && message.name.length){
+        console.log(this.students
+          .filter((student) =>
+            `${student.firstName} ${student.lastName}`
+            .toLowerCase()
+            .includes((message.name && message.name.toLowerCase()) || "")
+          ).map(x => `${x.firstName} ${x.lastName}`))
+        return {
+          state: new Home(
+            this.students,
+            message.name
+          )
+        }
+      }
       return { state: this };
   }
 
@@ -17,7 +31,8 @@ export class Home implements Home.State {
   ]
 
   private constructor(
-    readonly students: ReadonlyArray<Student>
+    readonly students: ReadonlyArray<Student>,
+    readonly searchName?: string
   ) {}
 }
 
@@ -26,15 +41,19 @@ export class Home implements Home.State {
 
 export namespace Home {
   export interface State {
-    students: ReadonlyArray<Student>;
+    readonly students: ReadonlyArray<Student>;
+    readonly searchName?: string;
   }
 
   export type Message
-    = Timeout;
+    = SearchName;
 }
 
 
 /** Messages */
 
-class Timeout {
+export class SearchName {
+  constructor(
+    readonly name: string
+  ){}
 }

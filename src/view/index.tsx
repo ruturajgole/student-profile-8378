@@ -10,7 +10,6 @@ import { HomeView } from "./home";
 
 
 export const AppView: React.FunctionComponent<Props> = ({ state, dispatch }) => {
-  console.log(state);
   if (state instanceof Loading) {
     return <LoadingView />;
   } else if (state instanceof Home) {
