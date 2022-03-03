@@ -99,6 +99,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     },
     image: {
         margin: "20px",
+        display: "block",
         objectFit: "contain",
         height: "110px",
         borderRadius: "100px",

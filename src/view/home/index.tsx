@@ -66,21 +66,21 @@ interface Props {
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
     display: "flex",
-    backgroundColor: "aliceblue",
     justifyContent: "center",
+    height: "100%",
+    width: "100%"
   },
   listContainer: {
     borderRadius: "1rem",
     width: "55%",
-    margin: "2% 0%",
-    overflow: "auto",
+    margin: "4% 0%",
     padding: "1rem",
     backgroundColor: "white"
   },
   list: {
     borderRadius: "1rem",
     listStyle: 'none',
-    height: "29rem",
+    maxHeight: "29rem",
     padding: "0",
     overflow: "auto",
   },
