@@ -18,6 +18,7 @@ export const getData = <R, E, C>(
             ({ ...student, 
               grades: student.grades.map((grade) => Number(grade)),
               average: Number(student.grades.reduce((acc, value) => Number(acc) + Number(value), 0) / student.grades.length),
+              tags: [],
             })), context);
         } catch (e: any) {
           return new Error(ErrorInfo.make(e), context);

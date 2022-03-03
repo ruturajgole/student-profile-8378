@@ -1,14 +1,18 @@
 import React from "react"
 
-export const SearchField: React.FunctionComponent<Props> = (props) =>
+export const InputField: React.FunctionComponent<Props> = (props) =>
     <input
+        onKeyUp={({key}) => (key == 'Enter') && props.onKeyup && props.onKeyup()}
         onInput={({currentTarget}) => props.onInput(currentTarget.value)}
+        value={props.value}
         style={styles.field}
         placeholder={props.placeholder}/>
 
 interface Props {
     placeholder: string;
+    value?: string;
     onInput: (input: string) => void;
+    onKeyup?: () => void;
 }
 
 /** Styles */

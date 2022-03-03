@@ -9,4 +9,5 @@ export interface Student {
     city: string;
     skill: string;
     average: number;
+    tags: ReadonlyArray<string>;
 }

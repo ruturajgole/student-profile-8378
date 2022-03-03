@@ -17,6 +17,16 @@ export class Home implements Home.State {
           message.name || ""
         )
       }
+    } else if(message instanceof UpdateStudent){
+      return {
+        state: new Home(this.students.map((student) => 
+          (student.id == message.student.id)
+          ? message.student
+          : student),
+          this.searchName
+        ),
+        
+      }
     }
     return { state: this };
   }
@@ -40,7 +50,8 @@ export namespace Home {
   }
 
   export type Message
-    = SearchName;
+    = SearchName
+    | UpdateStudent;
 }
 
 
@@ -49,5 +60,11 @@ export namespace Home {
 export class SearchName {
   constructor(
     readonly name: string
+  ){}
+}
+
+export class UpdateStudent {
+  constructor(
+    readonly student: Student
   ){}
 }

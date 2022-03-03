@@ -1,14 +1,15 @@
 import React from "react";
 import { Dispatch } from "futura";
 
-import { Home, SearchName } from "../../state/home";
+import { Home, SearchName, UpdateStudent } from "../../state/home";
 import { StudentListItem } from "../../lib/list-item";
-import { SearchField } from "../../lib/form/search-field";
+import { InputField } from "../../lib/form/input-field";
+import { Student } from "app/services/models";
 
 export const HomeView: React.FunctionComponent<Props> = ({state, dispatch}) =>
   <div style={styles.container}>
     <div style={styles.listContainer}>
-      <SearchField
+      <InputField
         placeholder="Search by name"
         onInput={onSearchName(dispatch)} />
       <ul style={styles.list}>
@@ -22,7 +23,9 @@ export const HomeView: React.FunctionComponent<Props> = ({state, dispatch}) =>
             <li
               style={styles.listItem}
               key={student.id}>
-              <StudentListItem student={student}/>
+              <StudentListItem
+                student={student}
+                onUpdateStudent={onUpdateStudent(dispatch)}/>
             </li>
           )
         }
@@ -35,6 +38,10 @@ export const HomeView: React.FunctionComponent<Props> = ({state, dispatch}) =>
 const onSearchName = (dispatch: Dispatch<Home.Message>) =>
   (name: string) =>
     dispatch(new SearchName(name));
+
+const onUpdateStudent = (dispatch: Dispatch<Home.Message>) =>
+  (student: Student) =>
+    dispatch(new UpdateStudent(student));
 
 /** Types */
 
