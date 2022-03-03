@@ -24,6 +24,7 @@ const styles: { [key: string]: React.CSSProperties } = {
         fontFamily: "Raleway",
         borderStyle: "none",
         borderBottom: "1px groove",
-        padding: "5px"
+        padding: "5px",
+        margin: "0.5rem 0rem"
     }
 };

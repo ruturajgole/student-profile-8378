@@ -1,7 +1,7 @@
 import React from "react";
 import { Dispatch } from "futura";
 
-import { Home, SearchName, UpdateStudent } from "../../state/home";
+import { Home, SearchName, SearchTag, UpdateStudent } from "../../state/home";
 import { StudentListItem } from "../../lib/list-item";
 import { InputField } from "../../lib/form/input-field";
 import { Student } from "app/services/models";
@@ -12,13 +12,20 @@ export const HomeView: React.FunctionComponent<Props> = ({state, dispatch}) =>
       <InputField
         placeholder="Search by name"
         onInput={onSearchName(dispatch)} />
+      <InputField
+        placeholder="Search by tag"
+        onInput={onSearchTag(dispatch)} />
       <ul style={styles.list}>
         {
           state.students
-          .filter((student) =>
+          .filter((student) => (
             `${student.firstName} ${student.lastName}`
             .toLowerCase()
-            .includes((state.searchName && state.searchName.toLowerCase()) || ""))
+            .includes((state.searchName && state.searchName.toLowerCase()) || "")) && (
+            !state.searchTag ||
+            student.tags.some((tag) =>
+              state.searchTag && tag.toLowerCase().includes(state.searchTag.toLowerCase()))
+            ))
           .map((student) =>
             <li
               style={styles.listItem}
@@ -38,6 +45,10 @@ export const HomeView: React.FunctionComponent<Props> = ({state, dispatch}) =>
 const onSearchName = (dispatch: Dispatch<Home.Message>) =>
   (name: string) =>
     dispatch(new SearchName(name));
+
+const onSearchTag = (dispatch: Dispatch<Home.Message>) =>
+  (tag: string) =>
+    dispatch(new SearchTag(tag));
 
 const onUpdateStudent = (dispatch: Dispatch<Home.Message>) =>
   (student: Student) =>
@@ -69,7 +80,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   list: {
     borderRadius: "1rem",
     listStyle: 'none',
-    height: "36rem",
+    height: "29rem",
     padding: "0",
     overflow: "auto",
   },

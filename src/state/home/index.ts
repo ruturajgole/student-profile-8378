@@ -14,19 +14,28 @@ export class Home implements Home.State {
       return {
         state: new Home(
           this.students,
-          message.name || ""
-        )
-      }
+          message.name || "",
+          this.searchTag
+        ),
+      };
+    } else if(message instanceof SearchTag){
+      return {
+        state: new Home(
+          this.students,
+          this.searchName,
+          message.tag
+        ),
+      };
     } else if(message instanceof UpdateStudent){
       return {
         state: new Home(this.students.map((student) => 
           (student.id == message.student.id)
           ? message.student
           : student),
-          this.searchName
+          this.searchName,
+          this.searchTag
         ),
-        
-      }
+      };
     }
     return { state: this };
   }
@@ -36,7 +45,8 @@ export class Home implements Home.State {
 
   private constructor(
     readonly students: ReadonlyArray<Student>,
-    readonly searchName?: string
+    readonly searchName?: string,
+    readonly searchTag?: string,
   ) {}
 }
 
@@ -47,10 +57,12 @@ export namespace Home {
   export interface State {
     readonly students: ReadonlyArray<Student>;
     readonly searchName?: string;
+    readonly searchTag?: string;
   }
 
   export type Message
     = SearchName
+    | SearchTag
     | UpdateStudent;
 }
 
@@ -60,6 +72,12 @@ export namespace Home {
 export class SearchName {
   constructor(
     readonly name: string
+  ){}
+}
+
+export class SearchTag {
+  constructor(
+    readonly tag: string
   ){}
 }
 
