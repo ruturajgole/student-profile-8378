@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-import { init, Message, State, subscriptions, update } from "./state";
-import { AppView } from "./view";
+import { init, Message, State, subscriptions, update } from "../src/state";
+import { AppView } from "../src/view";
 import { program, Program } from 'futura';
 
 export default class App extends Component<AppProps, AppState> {
@@ -34,11 +34,9 @@ export default class App extends Component<AppProps, AppState> {
     const { state } = this.state;
 
     return (
-      <div>
-        <AppView
-          state={state}
-          dispatch={this.dispatch} />
-      </div>
+      <AppView
+        state={state}
+        dispatch={this.dispatch} />
     );
   }
 
@@ -79,4 +77,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-

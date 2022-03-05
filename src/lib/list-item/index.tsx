@@ -48,7 +48,7 @@ export class StudentListItem extends Component<Props, State> {
                 {isExpanded && 
                     <ul style={styles.list}>
                         {
-                        student.grades.map((grade, index) =>
+                        student.grades.map((grade: number, index: number) =>
                             <li
                                 style={styles.listItem} 
                                 key={index}>
@@ -60,7 +60,7 @@ export class StudentListItem extends Component<Props, State> {
                     
                 }
                 <div style={styles.tagsContainer}>
-                    {student.tags.map((tag) => <p style={styles.tag} key={tag}>{tag}</p>)}
+                    {student.tags.map((tag: string) => <p style={styles.tag} key={tag}>{tag}</p>)}
                 </div>
                 <div style={styles.tagInputContainer}>
                     <InputField

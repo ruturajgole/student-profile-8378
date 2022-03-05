@@ -25,7 +25,7 @@ export const HomeView: React.FunctionComponent<Props> = ({state, dispatch}) =>
             .toLowerCase()
             .includes((state.searchName && state.searchName.toLowerCase()) || "")) && (
             !state.searchTag ||
-            student.tags.some((tag) =>
+            student.tags.some((tag: string) =>
               state.searchTag && tag.toLowerCase().includes(state.searchTag.toLowerCase()))
             ))
           .map((student) =>
@@ -89,7 +89,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     maxHeight: "29.5rem",
     padding: "0",
     margin: "0",
-    overflow: "clip",
+    overflow: "auto",
     scrollBehavior:"smooth"
   },
   listItem: {
