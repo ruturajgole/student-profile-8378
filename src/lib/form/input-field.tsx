@@ -19,12 +19,11 @@ interface Props {
 
 const styles: { [key: string]: React.CSSProperties } = {
     field: {
-        width: "100%",
+        width: '100%',
         fontSize: "medium",
         fontFamily: "Raleway",
         borderStyle: "none",
         borderBottom: "1px groove",
-        padding: "5px",
-        margin: "0.5rem 0rem"
+        padding: "0.5rem",
     }
 };

@@ -9,12 +9,14 @@ import { Student } from "app/services/models";
 export const HomeView: React.FunctionComponent<Props> = ({state, dispatch}) =>
   <div style={styles.container}>
     <div style={styles.listContainer}>
-      <InputField
-        placeholder="Search by name"
-        onInput={onSearchName(dispatch)} />
-      <InputField
-        placeholder="Search by tag"
-        onInput={onSearchTag(dispatch)} />
+      <div style={styles.inputsContainer}>
+        <InputField
+          placeholder="Search by name"
+          onInput={onSearchName(dispatch)} />
+        <InputField
+          placeholder="Search by tag"
+          onInput={onSearchTag(dispatch)} />
+      </div>
       <ul style={styles.list}>
         {
           state.students
@@ -70,19 +72,25 @@ const styles: { [key: string]: React.CSSProperties } = {
     height: "100%",
     width: "100%"
   },
+  inputsContainer: {
+    margin: "0",
+    padding: "0.5rem",
+  },
   listContainer: {
     borderRadius: "1rem",
     width: "55%",
     margin: "4% 0%",
-    padding: "1rem",
+    height: "35rem",
     backgroundColor: "white"
   },
   list: {
     borderRadius: "1rem",
     listStyle: 'none',
-    maxHeight: "29rem",
+    maxHeight: "29.5rem",
     padding: "0",
-    overflow: "auto",
+    margin: "0",
+    overflow: "clip",
+    scrollBehavior:"smooth"
   },
   listItem: {
     borderBottom: "0.1rem solid #EEE",
