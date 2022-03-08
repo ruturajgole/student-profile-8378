@@ -1,46 +1,19 @@
-# Getting Started with Create React App
+# Student Profile 8378
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app was created according to the instructions mentioned in the Frontend Assessment document (https://storage.googleapis.com/hatchways-app.appspot.com/assessments/data/instructions/f-5/Front-end%20Assessment%20-%20Student%20Profiles-JHM57Z6TS8X37B28KVW0.pdf).
 
-## Available Scripts
+## Framework
 
-In the project directory, you can run:
+The app is built using React.js with Typescript. The only third party package used is 'futura' (https://www.npmjs.com/package/futura) created by Ali Sabil. All other packages were created through the 'create-react-app' command. 
 
-### `npm start`
+## Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The app implements a finite state machine. The source code is located in the 'src' directory. All views are defined in the 'view' directory and the common UI elements are in the 'lib' directory. All states are located in the 'state' directory, and maintain the state of the app. All server calls and their response/request models are located in the 'services' directory. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Flow
 
-### `npm test`
+All events dispatched through the view are an update message to generate a new state. The events and the next possible states are predetermined in a finite state machine. Some components may have their own locally defined state, but I generally avoid that. The state can makes service requests for generating a new state. A stack of views is maintained with their corresponding states. The typesafety of Typescript and the clogs of the state machine make it easier to develop and debug the application.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Potential Improvements
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Subscriptions can keep the app updated with the hatchways server. Any changes made to the database should immediately be reflected in the app. 
